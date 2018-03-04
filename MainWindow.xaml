@@ -1,0 +1,33 @@
+﻿<Window x:Class="Adora_Scratchpad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Adora_Scratchpad"
+        mc:Ignorable="d"
+        Title="Adora Scratchpad" Height="500" Width="800">
+    <Grid>
+        <TextBox Text="{Binding Editor.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 FontFamily="{Binding EditorProperties.FontFamily}"
+                 FontSize="{Binding EditorProperties.FontSize}"
+                 FontWeight="{Binding EditorProperties.FontWeight}"
+                 FontStyle="{Binding EditorProperties.FontStyle}"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 AcceptsTab="True"
+                 VerticalScrollBarVisibility="Visible"
+                 KeyDown="Editor_KeyDown"
+                 x:Name="textbox">
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="ApplicationCommands.Cut" />
+                    <MenuItem Command="ApplicationCommands.Copy" />
+                    <MenuItem Command="ApplicationCommands.Paste" />
+                    <MenuItem Command="ApplicationCommands.SelectAll" />
+                    <Separator />
+                    <MenuItem Header="_Font..." Command="{Binding ChangeFontCommand}" />
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+    </Grid>
+</Window>
